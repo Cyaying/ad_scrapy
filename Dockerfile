@@ -1,8 +1,6 @@
 FROM python:3.8
 
-RUN apt-get update \
-    && pip install -i --upgrade pip \
-    && pip install -i scrapy==2.5.0 beautifulsoup4==4.9.3
+RUN pip install scrapy==2.5.0 beautifulsoup4==4.9.3 -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
 
 CMD scrapy crawl crawl_article
 
