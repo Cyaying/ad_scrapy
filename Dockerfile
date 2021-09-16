@@ -1,12 +1,10 @@
-FROM    python:3.8
+FROM python:3.8
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends git \
+RUN git clone git@github.com:catcher-mob/ad_scrapy.git /home/mob/AD_project/ad_scrapy \
+    && apt-get update \
     && pip install -i https://mirrors.aliyun.com/pypi/simple/ --upgrade pip \
-    && pip install -i https://mirrors.aliyun.com/pypi/simple/ scrapy==$SCRAPY_VERSION pymysql==1.0.2 pillow==8.2.0 arrow==1.0.3 \
-    && pip install -U git+https://github.com/scrapy/scrapyd.git \
-    && git clone https://github.com/baabaaox/ScrapyDouban.git /srv/ScrapyDouban
+    && pip install -i https://mirrors.aliyun.com/pypi/simple/ scrapy==2.5.0 beautifulsoup4==4.9.3
 
-COPY scrapyd.conf /etc/scrapyd/
+CMD scrapy crawl crawl_article
 
-EXPOSE 6800
+COPY ad_articles.json /home/mob/AD_project/ad_django
