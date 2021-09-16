@@ -19,7 +19,7 @@ class AdScrapyPipeline:
 
     def open_spider(self, spider):
         print('********** start ... **********')
-        self.fp = codecs.open('./AD_articles.json', 'w', encoding='utf-8')
+        self.fp = codecs.open('./ad_articles.json', 'w', encoding='utf-8')
 
     def process_item(self, item, spider):
         item = dict(item)
